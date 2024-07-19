@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "name": "gpd-labs",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "build:test:web": "cp ./apps/web/Dockerfile Dockerfile && turbo run build:test --filter web",
+    "build:stage:web": "cp ./apps/web/Dockerfile Dockerfile && turbo run build:stage --filter web",
+    "build:prod:web": "cp ./apps/web/Dockerfile Dockerfile && turbo run build:prod --filter web",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install",
+    "type-check": "turbo run type-check"
+  },
+  "devDependencies": {
+    "@gpd-labs/eslint-config": "workspace:*",
+    "@types/node": "^20.11.5",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.2",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.+(ts|tsx)": [
+      "eslint --fix"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "*.js": "eslint --cache --fix"
+  }
+}

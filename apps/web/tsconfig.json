@@ -1,0 +1,11 @@
+{
+  "extends": "@gpd-labs/typescript-config/vite.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.jsx"],
+  "exclude": ["node_modules"],
+}
